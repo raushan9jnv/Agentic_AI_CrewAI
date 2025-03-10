@@ -1,6 +1,12 @@
 from crewai import Agent, Task, Crew
-# creating agents- three agents (planner,writer, editor)
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+
+# creating agents- three agents (planner,writer, editor)
 #agent-1
 planner =  Agent(
     role ="Content Planner",
