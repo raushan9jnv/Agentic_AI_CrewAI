@@ -1,21 +1,8 @@
-# import warnings
-# warnings.filterwarnings('ignore')
+import warnings
+warnings.filterwarnings('ignore')
 
 from crewai import Agent, Task, Crew
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool, WebsiteSearchTool
-from langchain_groq import ChatGroq
-from langchain_openai import ChatOpenAI
-
-# llm = ChatGroq(
-#     api_key="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",
-#     model ="mixtral-8x7b-32768"
-# )
-
-llm = ChatOpenAI(
-    openai_api_base="https://api.groq.com/openai/v1",
-    openai_api_key= "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",
-    model_name = "mixtral-8x7b-32768"
-)
 
 #Role playing, Focus and cooperation
 #agent-1
@@ -141,9 +128,8 @@ quality_assurance_review = Task(
 crew = Crew(
     agents = [support_agent, support_quality_assurance_agent],
     tasks = [inquiry_resolution,quality_assurance_review],
-    verbose = 2,
-    memory = True,
-    llm =llm
+    verbose = True,
+    memory = True
 )
 
 # Running the crew
